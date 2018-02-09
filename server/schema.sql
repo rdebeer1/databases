@@ -2,14 +2,21 @@ CREATE DATABASE chat;
 
 USE chat;
 
-CREATE TABLE messages (
-  /* Describe your table here.*/
+
+CREATE TABLE users (
+  user_id INT AUTO_INCREMENT,
+  user_name VARCHAR(25),
+  PRIMARY KEY (user_id)
 );
 
-/* Create other tables and define schemas for them here! */
-
-
-
+CREATE TABLE messages (
+  id INT AUTO_INCREMENT,
+  text VARCHAR(300),
+  user_id INT NOT NULL,
+  room_name varchar(25) NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users (user_id)
+);
 
 /*  Execute this file from the command line by typing:
  *    mysql -u root < server/schema.sql
